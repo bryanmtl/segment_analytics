@@ -12,6 +12,7 @@ view: session_trk_facts {
         , count(case when map.event = 'login' then event_id else null end) as cnt_login
         , count(case when map.event = 'subscribed_to_blog' then event_id else null end) as cnt_subscribed_to_blog
         , count(case when map.event = 'signup' then event_id else null end) as cnt_signup
+        , count(case when map.event = 'completed_order' then event_id else null end) as cnt_completed_order
       FROM ${sessions_trk.SQL_TABLE_NAME} AS s
       LEFT JOIN ${track_facts.SQL_TABLE_NAME} as map on map.session_id = s.session_id
       GROUP BY 1
