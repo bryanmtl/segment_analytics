@@ -1,5 +1,5 @@
 view: tracks {
-  sql_table_name: segment.tracks ;;
+  sql_table_name: segment_glossiertracks ;;
 
   dimension: anonymous_id {
     type: string
