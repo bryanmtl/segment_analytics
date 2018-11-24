@@ -1,5 +1,5 @@
 view: pages {
-  sql_table_name: segment_glossierpages ;;
+  sql_table_name: segment_glossier.pages ;;
 
   dimension: id {
     primary_key: yes

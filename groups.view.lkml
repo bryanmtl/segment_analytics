@@ -1,5 +1,5 @@
 view: groups {
-  sql_table_name: segment_glossiergroups ;;
+  sql_table_name: segment_glossier.groups ;;
 
   dimension: group_id {
     primary_key: yes

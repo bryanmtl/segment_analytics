@@ -8,14 +8,14 @@ view: aliases_mapping {
         select anonymous_id
         , user_id
         , received_at as received_at
-        from segment_glossiertracks
+        from segment_glossier.tracks
 
         union
 
         select user_id
           , null
           , received_at
-        from segment_glossiertracks
+        from segment_glossier.tracks
       )
 
       select

@@ -13,7 +13,7 @@ view: mapped_events {
           , t.received_at
           , NULL as referrer
           , 'tracks' as event_source
-        from segment_glossiertracks as t
+        from segment_glossier.tracks as t
         inner join ${page_aliases_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
 
@@ -26,7 +26,7 @@ view: mapped_events {
           , t.received_at
           , t.referrer as referrer
           , 'pages' as event_source
-        from segment_glossierpages as t
+        from segment_glossier.pages as t
         inner join ${page_aliases_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
       ) as e

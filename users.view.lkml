@@ -1,5 +1,5 @@
 view: users {
-  sql_table_name: segment_glossierusers ;;
+  sql_table_name: segment_glossier.users ;;
 
   dimension: id {
     primary_key: yes

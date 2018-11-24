@@ -1,5 +1,5 @@
 view: identifies {
-  sql_table_name: segment_glossieridentifies ;;
+  sql_table_name: segment_glossier.identifies ;;
 
   dimension: anonymous_id {
     type: string
