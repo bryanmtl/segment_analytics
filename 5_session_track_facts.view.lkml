@@ -8,10 +8,6 @@ view: session_trk_facts {
     sql: SELECT s.session_id
         , MAX(map.received_at) AS ended_at
         , count(distinct map.event_id) AS num_pvs
-        , count(case when map.event = 'app_loaded' then event_id else null end) as cnt_app_loaded
-        , count(case when map.event = 'login' then event_id else null end) as cnt_login
-        , count(case when map.event = 'subscribed_to_blog' then event_id else null end) as cnt_subscribed_to_blog
-        , count(case when map.event = 'signup' then event_id else null end) as cnt_signup
         , count(case when map.event = 'completed_order' then event_id else null end) as cnt_completed_order
       FROM ${sessions_trk.SQL_TABLE_NAME} AS s
       LEFT JOIN ${track_facts.SQL_TABLE_NAME} as map on map.session_id = s.session_id
@@ -41,24 +37,9 @@ view: session_trk_facts {
     sql: ${number_events} = 1 ;;
   }
 
-  dimension: app_loaded {
-    type: yesno
-    sql: ${TABLE}.cnt_app_loaded > 0 ;;
-  }
-
-  dimension: login {
-    type: yesno
-    sql: ${TABLE}.cnt_login > 0 ;;
-  }
-
   dimension: completed_order {
     type: yesno
     sql: ${TABLE}.cnt_completed_order > 0 ;;
-  }
-
-  dimension: signup {
-    type: yesno
-    sql: ${TABLE}.cnt_signup > 0 ;;
   }
 
   dimension: num_pvs {
@@ -71,38 +52,11 @@ view: session_trk_facts {
     sql: ${number_events} ;;
   }
 
-  measure: count_app_loaded {
-    type: count
-
-    filters: {
-      field: app_loaded
-      value: "yes"
-    }
-  }
-
-  measure: count_login {
-    type: count
-
-    filters: {
-      field: login
-      value: "yes"
-    }
-  }
-
   measure: count_completed_order {
     type: count
 
     filters: {
       field: completed_order
-      value: "yes"
-    }
-  }
-
-  measure: count_signup {
-    type: count
-
-    filters: {
-      field: signup
       value: "yes"
     }
   }
