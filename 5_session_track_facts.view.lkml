@@ -51,9 +51,9 @@ view: session_trk_facts {
     sql: ${TABLE}.cnt_login > 0 ;;
   }
 
-  dimension: subscribed_to_blog {
+  dimension: completed_order {
     type: yesno
-    sql: ${TABLE}.cnt_subscribed_to_blog > 0 ;;
+    sql: ${TABLE}.cnt_completed_order > 0 ;;
   }
 
   dimension: signup {
@@ -89,11 +89,11 @@ view: session_trk_facts {
     }
   }
 
-  measure: count_subscribed_to_blog {
+  measure: count_completed_order {
     type: count
 
     filters: {
-      field: subscribed_to_blog
+      field: completed_order
       value: "yes"
     }
   }
